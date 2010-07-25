@@ -19,4 +19,9 @@ Class Controller_Hello extends Controller
 	{
 		echo 'test, lolz';
 	}
+
+	function action_dynamic($say)
+	{
+		$this->request->response = 'You said:  '.$say;
+	}
 }
