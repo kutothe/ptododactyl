@@ -1,4 +1,5 @@
-<?php defined('SYSPATH') OR die('No Direct Script Access');
+<?php
+defined('SYSPATH') OR die('No Direct Script Access');
  
 Class Controller_Hello extends Controller
 {
