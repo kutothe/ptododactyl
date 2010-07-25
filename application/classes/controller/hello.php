@@ -16,6 +16,6 @@ Class Controller_Hello extends Controller
 	
 	function action_test()
 	{
-		echo 'test, lol';
+		echo 'test, lolz';
 	}
 }
