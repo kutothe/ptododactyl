@@ -10,9 +10,9 @@ Class Controller_Hello extends Controller
 		$this->profiler = new Profiler;
 	}
 
-    function action_index()
-    {
-        echo 'hello, worldz!';
+	function action_index()
+	{
+		$this->request->response = 'hello, worldz but better...';
 	}
 	
 	function action_test()
