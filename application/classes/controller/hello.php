@@ -1,8 +1,8 @@
-<?php
-defined('SYSPATH') OR die('No Direct Script Access');
+<?php defined('SYSPATH') OR die('No Direct Script Access');
  
-Class Controller_Hello extends Controller
+Class Controller_Hello extends Controller_Template
 {
+	public $template = 'site';
 
 	function __construct(Kohana_Request $request)
 	{
@@ -17,7 +17,8 @@ Class Controller_Hello extends Controller
 	
 	function action_test()
 	{
-		echo 'test, lolz';
+		$this->template->message	= 'test, lolz!';
+		$this->template->derp		= 'hurrrrrr';
 	}
 
 	function action_dynamic($say)
