@@ -5,7 +5,7 @@ Class Controller_Auth extends Controller
 {
 	// TODO -- this should be passed into the constructor or something.
 	// TODO -- OR, use a default root controller?
-	private $default_destination = 'index.php/hello';
+	private $default_destination = 'index.php/hello/test';
 
 	function __construct(Kohana_Request $request)
 	{
