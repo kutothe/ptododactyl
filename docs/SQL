@@ -1,0 +1,193 @@
+-- phpMyAdmin SQL Dump
+-- version 2.11.8.1deb5+lenny4
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Jul 26, 2010 at 11:18 AM
+-- Server version: 5.0.51
+-- PHP Version: 5.2.13-0.dotdeb.1
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- Database: `ptododactyl`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `access_level`
+--
+
+CREATE TABLE IF NOT EXISTS `access_level` (
+  `id` int(11) NOT NULL auto_increment,
+  `title` varchar(128) NOT NULL,
+  `detail` varchar(1024) NOT NULL,
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `title` (`title`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `access_level`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comment`
+--
+
+CREATE TABLE IF NOT EXISTS `comment` (
+  `id` int(11) NOT NULL auto_increment,
+  `details` varchar(2048) NOT NULL,
+  `created_user_id` int(11) NOT NULL,
+  `created` timestamp NOT NULL default CURRENT_TIMESTAMP,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `comment`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `friend`
+--
+
+CREATE TABLE IF NOT EXISTS `friend` (
+  `id` int(11) NOT NULL auto_increment,
+  `friend1_user_id` int(11) NOT NULL,
+  `friend2_user_id` int(11) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `friend`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `list`
+--
+
+CREATE TABLE IF NOT EXISTS `list` (
+  `id` int(11) NOT NULL auto_increment,
+  `title` varchar(128) NOT NULL,
+  `detail` varchar(2048) NOT NULL,
+  `list_id` int(11) default NULL COMMENT 'potential parent list',
+  `created_user_id` int(11) NOT NULL,
+  `created` timestamp NOT NULL default CURRENT_TIMESTAMP,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `list`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `list_item`
+--
+
+CREATE TABLE IF NOT EXISTS `list_item` (
+  `id` int(11) NOT NULL,
+  `detail` varchar(2048) NOT NULL,
+  `created` timestamp NOT NULL default CURRENT_TIMESTAMP,
+  `created_user_id` int(11) NOT NULL,
+  `completed` timestamp NOT NULL default '0000-00-00 00:00:00',
+  `completed_user_id` int(11) NOT NULL,
+  `list_id` int(11) NOT NULL COMMENT 'list it belongs to',
+  `time_worked` int(11) NOT NULL COMMENT 'seconds',
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `list_item`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `list_item_comment`
+--
+
+CREATE TABLE IF NOT EXISTS `list_item_comment` (
+  `id` int(11) NOT NULL auto_increment,
+  `list_item_id` int(11) NOT NULL,
+  `comment_id` int(11) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `list_item_comment`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `list_user_access`
+--
+
+CREATE TABLE IF NOT EXISTS `list_user_access` (
+  `id` int(11) NOT NULL auto_increment,
+  `list_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `access_level_id` int(11) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `list_user_access`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reminder`
+--
+
+CREATE TABLE IF NOT EXISTS `reminder` (
+  `id` int(11) NOT NULL auto_increment,
+  `user_id` int(11) NOT NULL,
+  `list_item_id` int(11) NOT NULL,
+  `when` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `reminder`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` int(11) NOT NULL auto_increment,
+  `username` varchar(16) NOT NULL,
+  `password` blob NOT NULL,
+  `email` varchar(64) NOT NULL,
+  `first_name` varchar(32) NOT NULL,
+  `last_name` varchar(32) NOT NULL,
+  `created` timestamp NOT NULL default CURRENT_TIMESTAMP,
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `user`
+--
+

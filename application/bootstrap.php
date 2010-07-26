@@ -50,8 +50,8 @@ ini_set('unserialize_callback_func', 'spl_autoload_call');
  * - boolean  caching     enable or disable internal caching                 FALSE
  */
 Kohana::init(array(
-	'base_url'   => '/kohana/ptododactyl/',
-	'index_file' => FALSE,
+	'base_url'   => 'http://'.$_SERVER['SERVER_NAME'].'/kohana/ptododactyl/',
+	'index_file' => '',
     'profile'    => Kohana::$environment !== Kohana::PRODUCTION
 ));
 
