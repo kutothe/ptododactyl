@@ -32,7 +32,7 @@ Class Controller_Auth extends Controller
 		{
 			$ref = $this->default_destination;
 		}
-		print "chose ref: $ref<br>";
+		print "(debug) the referrer was: $ref<br>";
 		$view = View::factory('pages/auth/login');
 		$view->destination = $ref;
 		$this->request->response = $view->render();
@@ -62,7 +62,8 @@ Class Controller_Auth extends Controller
 		{
 			// TODO -- flash about failure?
 			// flash here  git://github.com/daveWid/message.git
-			$this->request->redirect("index.php/auth/login?destination=$destination");
+			$this->request->redirect(
+				"index.php/auth/login?destination=".urlencode($destination));
 		}
 	}
 
