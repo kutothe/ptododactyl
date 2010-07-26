@@ -13,13 +13,24 @@ class Controller_DefaultTemplate extends Controller_Template
 	{
 		// Run anything that need ot run before this.
 		parent::before();
+        
+        if ( ! Auth::instance()->logged_in() )
+        {
+            if ( $this->request->controller != 'auth' )
+            {
+                // If we want to force people to log in,
+                //   we can uncomment this line
+                // TODO -- send some message saying (you must login!)
+                //$this->request->redirect('index.php/auth/login');
+            }
+        }
 
 		if ($this->auto_render)
 		{
 			// Initialize empty values
 			$this->template->title				= 'Ptododactyl Rulez!';
 			$this->template->meta_keywords		= '';
-			$this->template->meta_description	= '';
+			$this->template->meta_description   = '';
 			$this->template->meta_copywrite		= '';
 			$this->template->header				= View::factory('includes/header');
 			$this->template->content			= '';
