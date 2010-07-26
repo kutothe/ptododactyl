@@ -1,0 +1,2 @@
+git remote add ralphbean git://github.com/ralphbean/ptododactyl.git
+git pull ralphbean master
