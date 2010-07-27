@@ -10,25 +10,25 @@ Class Controller_Hello extends Controller_DefaultTemplate
 
 	function action_index()
 	{
-		$this->request->response = 'hello, worldz but better...';
+		$this->template->content = 'Ohhhhh yeaaaaah!';
 	}
 	
-	function action_test()
-	{
-		$this->template->title		= 'Hurka Der';
-		$this->template->content	= View::factory('list/list_items');
-	}
-
-	function action_dynamic($say)
-	{
-		$this->request->response = 'You said:  '.$say;
-	}
-	
-	function action_harry_test()
+	function action_test($list_id=0)
 	{
 		$this->template->title		= 'Harry\'s Ptestdactyl';
-		$this->template->content	= View::factory('list/list_items', array(
-			'list_items'	=> array()
-		));
+		
+		if ($list_id <= 0)
+		{
+			$this->template->content	= View::factory('list/lists', array(
+				'lists'	=> ORM::factory('list')->find_all()
+			));
+		}
+		else
+		{
+			$this->template->content	= View::factory('list/list_items', array(
+				'list'			=> ORM::factory('list', $list_id),
+				'list_items'	=> ORM::factory('list_item')->where('lists_id', '=', $list_id)->find_all()
+			));
+		}
 	}
 }
