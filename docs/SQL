@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 26, 2010 at 11:18 AM
+-- Generation Time: Jul 27, 2010 at 01:31 PM
 -- Server version: 5.0.51
 -- PHP Version: 5.2.13-0.dotdeb.1
 
@@ -83,12 +83,15 @@ CREATE TABLE IF NOT EXISTS `list` (
   `created_user_id` int(11) NOT NULL,
   `created` timestamp NOT NULL default CURRENT_TIMESTAMP,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `list`
 --
 
+INSERT INTO `list` (`id`, `title`, `detail`, `list_id`, `created_user_id`, `created`) VALUES
+(1, 'Harry''s List', 'first list', NULL, 1, '2010-07-27 13:09:11'),
+(2, 'Second List', 'my second list', NULL, 1, '2010-07-27 13:12:54');
 
 -- --------------------------------------------------------
 
@@ -97,21 +100,24 @@ CREATE TABLE IF NOT EXISTS `list` (
 --
 
 CREATE TABLE IF NOT EXISTS `list_item` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL auto_increment,
   `detail` varchar(2048) NOT NULL,
   `created` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `created_user_id` int(11) NOT NULL,
-  `completed` timestamp NOT NULL default '0000-00-00 00:00:00',
-  `completed_user_id` int(11) NOT NULL,
+  `completed` timestamp NULL default NULL,
+  `completed_user_id` int(11) default NULL,
   `list_id` int(11) NOT NULL COMMENT 'list it belongs to',
-  `time_worked` int(11) NOT NULL COMMENT 'seconds',
+  `time_worked` int(11) NOT NULL default '0' COMMENT 'seconds',
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `list_item`
 --
 
+INSERT INTO `list_item` (`id`, `detail`, `created`, `created_user_id`, `completed`, `completed_user_id`, `list_id`, `time_worked`) VALUES
+(1, 'first list item', '2010-07-27 13:10:19', 1, NULL, NULL, 1, 0),
+(2, 'second list item', '2010-07-27 13:11:08', 1, NULL, NULL, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -185,9 +191,12 @@ CREATE TABLE IF NOT EXISTS `user` (
   `created` timestamp NOT NULL default CURRENT_TIMESTAMP,
   PRIMARY KEY  (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `user`
 --
 
+INSERT INTO `user` (`id`, `username`, `password`, `email`, `first_name`, `last_name`, `created`) VALUES
+(1, 'kutothe', 0xac74aaec275e583204cc18a83d368ee2, 'rayfinkle@gmail.com', 'Harry', 'Groover', '2010-07-27 13:08:35'),
+(2, 'ralphbean', 0xac74aaec275e583204cc18a83d368ee2, 'ralph.bean@gmail.com', 'Ralph', 'Bean', '2010-07-27 13:12:36');

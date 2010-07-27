@@ -6,7 +6,6 @@ Class Controller_Hello extends Controller_DefaultTemplate
 	function __construct(Kohana_Request $request)
 	{
 		parent::__construct($request);
-		$this->profiler = new Profiler;
 	}
 
 	function action_index()
@@ -23,5 +22,13 @@ Class Controller_Hello extends Controller_DefaultTemplate
 	function action_dynamic($say)
 	{
 		$this->request->response = 'You said:  '.$say;
+	}
+	
+	function action_harry_test()
+	{
+		$this->template->title		= 'Harry\'s Ptestdactyl';
+		$this->template->content	= View::factory('list/list_items', array(
+			'list_items'	=> array()
+		));
 	}
 }

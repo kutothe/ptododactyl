@@ -1,2 +1,16 @@
 body {font-family: Georgia;}
 h1 {font-style: italic;}
+
+#main-content-container {
+	padding: 20px;
+}
+#footer-container {
+	border-top: 1px solid #aaa;
+}
+#footer-container, #header-container {
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	border-bottom: 1px solid #aaa;
+	background-color: #eee;
+}

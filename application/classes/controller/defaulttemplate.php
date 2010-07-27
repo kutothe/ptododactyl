@@ -50,6 +50,7 @@ class Controller_DefaultTemplate extends Controller_Template
 			// Define defaults
 			$styles		= array(
 				'../assets/css/reset.css'	=> 'screen',
+				'../assets/css/styles.css'	=> 'screen',
 				'assets/css/styles.css'		=> 'screen'
 			);
 			$scripts	= array(

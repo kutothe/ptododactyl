@@ -51,7 +51,7 @@ ini_set('unserialize_callback_func', 'spl_autoload_call');
  */
 Kohana::init(array(
 	'base_url'   => 'http://'.$_SERVER['SERVER_NAME'].'/kohana/ptododactyl/',
-	'index_file' => '',
+	//'index_file' => '',
     'profile'    => Kohana::$environment !== Kohana::PRODUCTION
 ));
 
