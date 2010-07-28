@@ -4,6 +4,6 @@
 	temp footer
 </div>
 
-<div style="margin-top:50px;">
+<div style="margin-top:100px;">
 	<?php echo View::factory('profiler/stats') ?>
 </div>

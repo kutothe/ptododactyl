@@ -2,7 +2,9 @@
 
 class Model_List extends ORM
 {
-	protected $_table_columns = array(
+	protected $_primary_val		= 'title';
+	
+	protected $_table_columns	= array(
 		'title'		=> array('data_type' => 'string',	'is_nullable' => FALSE),
 		'detail'	=> array('data_type' => 'string',	'is_nullable' => TRUE),
 		'lists_id'	=> array('data_type' => 'int',		'is_nullable' => TRUE),

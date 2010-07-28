@@ -24,6 +24,12 @@ $modules = '../modules';
 $system = '../system';
 
 /**
+ * The directory in which private include files are located.
+ * Usually DB user/pass stuff.
+ */
+$privates = '../private';
+
+/**
  * The default extension of resource files. If you change this, all resources
  * must be renamed to use the new extension.
  *
@@ -70,6 +76,7 @@ if ( ! is_dir($system) AND is_dir(DOCROOT.$system))
 
 // Define the absolute paths for configured directories
 define('APPPATH', realpath($application).DIRECTORY_SEPARATOR);
+define('PRIVATEPATH', realpath($privates).DIRECTORY_SEPARATOR);
 define('MODPATH', realpath($modules).DIRECTORY_SEPARATOR);
 define('SYSPATH', realpath($system).DIRECTORY_SEPARATOR);
 

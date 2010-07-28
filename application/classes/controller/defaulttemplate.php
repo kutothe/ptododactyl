@@ -54,7 +54,7 @@ class Controller_DefaultTemplate extends Controller_Template
 				'assets/css/styles.css'		=> 'screen'
 			);
 			$scripts	= array(
-				url::site('../assets/js/jquery/jquery-1.4.2.min.js'),
+				url::base().'../assets/js/jquery/jquery-1.4.2.min.js',
 				url::site('assets/js/scripts.js')
 			);
 
